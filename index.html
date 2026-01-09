@@ -3,198 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Annamarie Jayaweera - Professional English Language & Music Tutor specializing in Piano, Vocals, and Trinity College London Exams">
-    <title>Annamarie Jayaweera - English & Music Tutor</title>
+    <meta name="description" content="Annamarie Jayaweera - Professional English & Music Academy">
+    <title>Annamarie Jayaweera | Vyshnavi Music Academy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
-        .gradient-bg { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%); }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .gradient-nav { background: linear-gradient(90deg, #dc2626 0%, #991b1b 100%); }
-        .nav-link { transition: all 0.3s ease; cursor: pointer; padding: 0.5rem 1rem; }
-        .nav-link:hover { color: #fef08a; transform: translateY(-2px); }
-        .nav-link.active { color: #fde047; font-weight: 600; border-bottom: 3px solid #fde047; }
-        .card { transition: all 0.4s ease; position: relative; overflow: hidden; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
-        .btn-primary { transition: all 0.3s ease; position: relative; overflow: hidden; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); }
-        .section { display: none; animation: fadeIn 0.6s ease-in; }
+        .section { display: none; animation: fadeIn 0.5s ease-out; }
         .section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-        .floating { animation: float 3s ease-in-out infinite; }
-        .profile-image { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 8px solid white; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3); }
-        .mobile-nav { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .nav-link { cursor: pointer; transition: 0.3s; }
+        .nav-link:hover { color: #fde047; }
+        .active-nav { color: #fde047; font-weight: bold; border-bottom: 2px solid #fde047; }
+        .card-hover:hover { transform: translateY(-5px); transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .mobile-nav { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
         .mobile-nav.open { max-height: 500px; }
-        .skill-tag { background: #f3f4f6; padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; color: #374151; transition: all 0.3s; }
-        .skill-tag:hover { background: #dc2626; color: white; }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-slate-50 text-slate-900">
 
-    <nav class="gradient-nav text-white shadow-2xl fixed w-full z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="text-xl md:text-2xl font-bold flex items-center space-x-2">
-                    <span>🎹</span>
-                    <span>Annamarie Jayaweera</span>
-                </div>
-                <div class="hidden md:flex space-x-2">
-                    <button onclick="showSection('home')" class="nav-link active" data-nav="home">Home</button>
-                    <button onclick="showSection('about')" class="nav-link" data-nav="about">About</button>
-                    <button onclick="showSection('services')" class="nav-link" data-nav="services">Services</button>
-                    <button onclick="showSection('gallery')" class="nav-link" data-nav="gallery">Gallery</button>
-                    <button onclick="showSection('contact')" class="nav-link" data-nav="contact">Contact</button>
-                </div>
-                <button onclick="toggleMobileMenu()" class="md:hidden text-3xl">☰</button>
+    <nav class="gradient-nav text-white fixed w-full z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="font-bold text-xl flex items-center gap-2">
+                <span class="text-2xl">🎵</span> Vyshnavi Academy
             </div>
-            <div id="mobileNav" class="mobile-nav md:hidden flex flex-col space-y-2 pb-4">
-                <button onclick="showSection('home'); toggleMobileMenu()" class="text-left py-2 px-4">Home</button>
-                <button onclick="showSection('about'); toggleMobileMenu()" class="text-left py-2 px-4">About</button>
-                <button onclick="showSection('services'); toggleMobileMenu()" class="text-left py-2 px-4">Services</button>
-                <button onclick="showSection('gallery'); toggleMobileMenu()" class="text-left py-2 px-4">Gallery</button>
-                <button onclick="showSection('contact'); toggleMobileMenu()" class="text-left py-2 px-4">Contact</button>
+            
+            <div class="hidden md:flex gap-8 items-center">
+                <a onclick="showPage('home')" id="nav-home" class="nav-link active-nav">Home</a>
+                <a onclick="showPage('music')" id="nav-music" class="nav-link">Music Lessons</a>
+                <a onclick="showPage('english')" id="nav-english" class="nav-link">English Lessons</a>
+                <a onclick="showPage('about')" id="nav-about" class="nav-link">About</a>
+                <a onclick="showPage('contact')" class="bg-yellow-400 text-red-900 px-4 py-2 rounded-lg font-bold hover:bg-white transition">Enroll Now</a>
             </div>
+
+            <button class="md:hidden text-2xl" onclick="toggleMenu()">☰</button>
+        </div>
+        <div id="mobileMenu" class="mobile-nav md:hidden bg-red-800 px-6 space-y-4 pb-4">
+            <a onclick="showPage('home')" class="block py-2 border-b border-red-700">Home</a>
+            <a onclick="showPage('music')" class="block py-2 border-b border-red-700">Music Lessons</a>
+            <a onclick="showPage('english')" class="block py-2 border-b border-red-700">English Lessons</a>
+            <a onclick="showPage('about')" class="block py-2 border-b border-red-700">About</a>
+            <a onclick="showPage('contact')" class="block py-2 text-yellow-400">Contact</a>
         </div>
     </nav>
 
-    <section id="home" class="section active gradient-bg min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto px-4 pt-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <div class="inline-block bg-white px-4 py-2 rounded-full shadow-lg">
-                        <p class="text-red-600 font-semibold">🎵 Vyshnavi Music Academy</p>
-                    </div>
-                    <h1 class="text-5xl md:text-7xl font-bold text-gray-800">Hello, I'm <span class="text-red-600">Annamarie</span></h1>
-                    <p class="text-lg text-gray-700">Specializing in English Language, Piano, and Vocals. Preparing students for a global stage with Trinity College London standards.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <button onclick="showSection('contact')" class="bg-red-600 text-white px-8 py-3 rounded-xl font-bold btn-primary">Book a Lesson</button>
-                        <a href="https://wa.me/94702709942" target="_blank" class="bg-green-500 text-white px-8 py-3 rounded-xl font-bold btn-primary flex items-center gap-2">WhatsApp</a>
-                    </div>
+    <main id="home" class="section active pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">Master the Art of <span class="text-red-600">Music</span> & <span class="text-blue-600">Language</span></h1>
+                <p class="mt-6 text-lg text-slate-600">Join **Vyshnavi Music Academy**. Professional tutoring by Annamarie Jayaweera, helping students excel in Trinity College exams and global English proficiency.</p>
+                <div class="mt-8 flex gap-4">
+                    <button onclick="showPage('music')" class="bg-red-600 text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-red-700 transition">Music Academy</button>
+                    <button onclick="showPage('english')" class="bg-white border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition">English Tutoring</button>
                 </div>
-                <div class="flex justify-center">
-                    <img src="https://via.placeholder.com/300/dc2626/FFFFFF?text=AJ" class="profile-image floating" alt="Annamarie">
+            </div>
+            <div class="relative">
+                <img src="https://via.placeholder.com/500x600?text=Annamarie+Jayaweera" class="rounded-3xl shadow-2xl mx-auto" alt="Annamarie">
+                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl hidden md:block">
+                    <p class="font-bold text-red-600 text-xl">7+ Years</p>
+                    <p class="text-sm text-slate-500">Teaching Excellence</p>
                 </div>
+            </div>
+        </div>
+    </main>
+
+    <section id="music" class="section pt-32 pb-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-slate-900">Western Music Education</h2>
+                <p class="text-slate-500 mt-4">Vyshnavi Music Academy - Developing the next generation of performers.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 border rounded-3xl card-hover">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center text-3xl mb-6">🎹</div>
+                    <h3 class="text-2xl font-bold mb-4">Piano Instruction</h3>
+                    <p class="text-slate-600">From Grade 1 to 8. We cover technique, scales, and performance pieces tailored for Trinity College London exams.</p>
+                </div>
+                <div class="p-8 border rounded-3xl card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-3xl mb-6">🎤</div>
+                    <h3 class="text-2xl font-bold mb-4">Vocal Coaching</h3>
+                    <p class="text-slate-600">Training in breath control, pitch accuracy, and stylization across Classical, Pop, and Jazz genres.</p>
+                </div>
+                <div class="p-8 border rounded-3xl card-hover">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-3xl mb-6">🎼</div>
+                    <h3 class="text-2xl font-bold mb-4">Music Theory</h3>
+                    <p class="text-slate-600">Deep dive into notation, rhythm, harmony, and composition to build a solid foundation for any instrument.</p>
+                </div>
+            </div>
+            <div class="mt-16 bg-red-50 p-10 rounded-3xl flex flex-col md:flex-row items-center justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold">Trinity College London Exams</h3>
+                    <p class="text-slate-600 mt-2">We provide specialized training for international grade examinations.</p>
+                </div>
+                <button onclick="showPage('contact')" class="mt-6 md:mt-0 bg-red-600 text-white px-8 py-3 rounded-lg font-bold">Register for Music</button>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section bg-white min-h-screen py-24">
+    <section id="english" class="section pt-32 pb-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16">Education & Skills</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card p-8 bg-gray-50 rounded-2xl">
-                    <h3 class="text-2xl font-bold mb-4 text-red-600">Qualifications</h3>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-blue-900">English Language & Literature</h2>
+                <p class="text-slate-500 mt-4">Empowering students through global communication skills.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white p-10 rounded-3xl shadow-sm border-t-8 border-blue-600">
+                    <h3 class="text-3xl font-bold mb-6">General English</h3>
                     <ul class="space-y-4">
-                        <li class="border-l-4 border-red-600 pl-4">
-                            <h4 class="font-bold">Bachelor of Music (Honours)</h4>
-                            <p class="text-gray-600">SLTC (2023 - Present)</p>
-                        </li>
-                        <li class="border-l-4 border-red-400 pl-4">
-                            <h4 class="font-bold">Trinity College London</h4>
-                            <p class="text-gray-600">Specialized Music Certifications</p>
-                        </li>
+                        <li class="flex items-center gap-3">✅ <span class="text-lg">Grammar & Vocabulary building</span></li>
+                        <li class="flex items-center gap-3">✅ <span class="text-lg">Spoken English & Fluency</span></li>
+                        <li class="flex items-center gap-3">✅ <span class="text-lg">Creative Writing Workshops</span></li>
+                        <li class="flex items-center gap-3">✅ <span class="text-lg">Preparation for School Curriculum</span></li>
                     </ul>
                 </div>
-                <div class="card p-8 bg-gray-50 rounded-2xl">
-                    <h3 class="text-2xl font-bold mb-4 text-purple-600">Core Expertise</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">Piano Training</span>
-                        <span class="skill-tag">Vocal Coaching</span>
-                        <span class="skill-tag">English Literature</span>
-                        <span class="skill-tag">Grammar & Speech</span>
-                        <span class="skill-tag">Trinity Exam Prep</span>
-                        <span class="skill-tag">Music Theory</span>
-                    </div>
+                <div class="bg-white p-10 rounded-3xl shadow-sm border-t-8 border-yellow-500">
+                    <h3 class="text-3xl font-bold mb-6">Literature & Elocution</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">📖 <span class="text-lg">English Literature (O/L & A/L)</span></li>
+                        <li class="flex items-center gap-3">🗣️ <span class="text-lg">Speech & Drama (Trinity Exams)</span></li>
+                        <li class="flex items-center gap-3">✍️ <span class="text-lg">Essay Writing & Critical Analysis</span></li>
+                        <li class="flex items-center gap-3">🎙️ <span class="text-lg">Public Speaking Confidence</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="section bg-gray-100 py-24">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16">My Services</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card bg-white p-8 rounded-2xl text-center">
-                    <div class="text-5xl mb-4">🎹</div>
-                    <h3 class="text-xl font-bold mb-2">Piano Lessons</h3>
-                    <p class="text-gray-600">From beginners to advanced grades, focusing on technique and expression.</p>
-                </div>
-                <div class="card bg-white p-8 rounded-2xl text-center">
-                    <div class="text-5xl mb-4">🎤</div>
-                    <h3 class="text-xl font-bold mb-2">Vocal Training</h3>
-                    <p class="text-gray-600">Develop your unique voice with professional breath control and pitch training.</p>
-                </div>
-                <div class="card bg-white p-8 rounded-2xl text-center">
-                    <div class="text-5xl mb-4">📚</div>
-                    <h3 class="text-xl font-bold mb-2">English Tutoring</h3>
-                    <p class="text-gray-600">Comprehensive language lessons for school exams and fluency.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="section bg-white py-24">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16">Vyshnavi Music Academy Gallery</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <img src="https://via.placeholder.com/400x400?text=Piano+Session" class="rounded-xl hover:opacity-75 cursor-pointer">
-                <img src="https://via.placeholder.com/400x400?text=Vocal+Practice" class="rounded-xl hover:opacity-75 cursor-pointer">
-                <img src="https://via.placeholder.com/400x400?text=English+Class" class="rounded-xl hover:opacity-75 cursor-pointer">
-                <img src="https://via.placeholder.com/400x400?text=Award+Ceremony" class="rounded-xl hover:opacity-75 cursor-pointer">
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section bg-gray-900 text-white py-24">
+    <section id="about" class="section pt-32 pb-20 bg-white">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-8">Get In Touch</h2>
-            <p class="mb-12 text-gray-400">Ready to start your journey? Contact me today for a consultation.</p>
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-gray-800 p-6 rounded-xl">
-                    <h4 class="text-red-500 font-bold">Email</h4>
-                    <p>vyshnavijayaweera@gmail.com</p>
+            <h2 class="text-4xl font-bold mb-8">Meet Annamarie Jayaweera</h2>
+            <p class="text-xl text-slate-600 leading-relaxed mb-10">
+                With a Bachelor of Music (Honours) from SLTC and an educational background from Visakha Vidyalaya and Good Shepherd Convent, 
+                I combine academic excellence with a lifelong passion for teaching. I believe that every student has a unique rhythm 
+                and voice waiting to be discovered.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="p-4 bg-slate-50 rounded-xl">
+                    <h4 class="font-bold text-red-600">7+</h4>
+                    <p class="text-sm">Years Exp.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-xl">
-                    <h4 class="text-red-500 font-bold">Phone</h4>
-                    <p>+94 70 270 9942</p>
+                <div class="p-4 bg-slate-50 rounded-xl">
+                    <h4 class="font-bold text-red-600">100+</h4>
+                    <p class="text-sm">Students</p>
                 </div>
-            </div>
-            <div class="flex justify-center gap-6">
-                <a href="https://facebook.com/vyshnavimusicacademy" class="text-3xl hover:text-blue-500">FB</a>
-                <a href="https://youtube.com/@vyshnavimusicacademy" class="text-3xl hover:text-red-600">YT</a>
-                <a href="https://instagram.com/vyshnavimusicacademy" class="text-3xl hover:text-pink-500">IG</a>
+                <div class="p-4 bg-slate-50 rounded-xl">
+                    <h4 class="font-bold text-red-600">Trinity</h4>
+                    <p class="text-sm">Qualified</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl">
+                    <h4 class="font-bold text-red-600">100%</h4>
+                    <p class="text-sm">Pass Rate</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black text-white py-6 text-center text-sm">
-        <p>&copy; 2024 Vyshnavi Music Academy. All Rights Reserved.</p>
+    <section id="contact" class="section pt-32 pb-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12">Let's Start Your Journey</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <a href="tel:+94702709942" class="p-8 bg-slate-800 rounded-2xl hover:bg-slate-700 transition">
+                    <div class="text-3xl mb-4">📞</div>
+                    <p>+94 70 270 9942</p>
+                </a>
+                <a href="mailto:vyshnavijayaweera@gmail.com" class="p-8 bg-slate-800 rounded-2xl hover:bg-slate-700 transition">
+                    <div class="text-3xl mb-4">✉️</div>
+                    <p class="text-sm md:text-base">vyshnavijayaweera@gmail.com</p>
+                </a>
+                <a href="https://wa.me/94702709942" target="_blank" class="p-8 bg-green-600 rounded-2xl hover:bg-green-500 transition">
+                    <div class="text-3xl mb-4">💬</div>
+                    <p>WhatsApp Me</p>
+                </a>
+            </div>
+
+            <div class="mt-16 border-t border-slate-700 pt-12">
+                <h3 class="text-2xl font-bold mb-6">Vyshnavi Music Academy</h3>
+                <div class="flex justify-center gap-8">
+                    <a href="https://facebook.com/vyshnavimusicacademy" class="hover:text-yellow-400 transition">Facebook</a>
+                    <a href="https://youtube.com/@vyshnavimusicacademy" class="hover:text-yellow-400 transition">YouTube</a>
+                    <a href="#" class="hover:text-yellow-400 transition">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 text-center text-slate-500 text-sm">
+        <p>© 2024 Annamarie Jayaweera | Vyshnavi Music Academy. All rights reserved.</p>
     </footer>
 
     <script>
-        function showSection(id) {
+        function showPage(pageId) {
             // Hide all sections
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            // Show target
-            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            // Show selected section
+            document.getElementById(pageId).classList.add('active');
             
-            // Update Nav Links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if(link.getAttribute('data-nav') === id) link.classList.add('active');
-            });
+            // Update Navigation state
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-nav'));
+            const activeNav = document.getElementById('nav-' + pageId);
+            if (activeNav) activeNav.classList.add('active-nav');
 
-            window.scrollTo(0, 0);
+            // Close mobile menu
+            document.getElementById('mobileMenu').classList.remove('open');
+            
+            // Scroll to top
+            window.scrollTo(0,0);
         }
 
-        function toggleMobileMenu() {
-            document.getElementById('mobileNav').classList.toggle('open');
-        }
-
-        function downloadCV() {
-            alert("Redirecting to CV Download...");
-            // window.location.href = 'path-to-your-cv.pdf';
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
         }
     </script>
 </body>
